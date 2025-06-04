@@ -33,6 +33,21 @@ yarn-error.log*
 # vercel
 .vercel
 
+#tauri
+/src-tauri/target/
+/src-tauri/.cargo/
+/src-tauri/.cargo.lock/
+/src-tauri/bundle/
+/src-tauri/*.log/
+
+# IDEs
+.vscode/
+
+# Instaladores
+*.msi
+*.exe
+*.zip
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
