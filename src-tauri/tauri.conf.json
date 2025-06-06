@@ -1,7 +1,7 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
   "productName": "Cronometro",
-  "version": "1.0.1",
+  "version": "1.1.1",
   "identifier": "com.cronometrosecgen.dev",
   "build": {
     "frontendDist": "../out",
@@ -26,9 +26,7 @@
         {
           "identifier": "title-bar",
           "windows": ["*"],
-          "permissions": [
-            "core:window:allow-close"
-          ]
+          "permissions": ["core:window:allow-close", "core:window:allow-start-dragging"]
         }
       ]
     }

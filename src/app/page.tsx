@@ -156,61 +156,67 @@ export default function ChronoKeysPage() {
   }
 
   return (
-    <main className={cn(
+    <main
+      className={cn(
         "flex min-h-screen flex-col items-center justify-center p-4 selection:bg-accent selection:text-accent-foreground",
-        "bg-background text-foreground font-body" 
+        "bg-background text-foreground font-body"
       )}
+      data-tauri-drag-region
     >
-      {
-        !isHidden ? (
-            <div className="absolute top-5 left-1/2 -translate-x-1/2 px-4 py-2 rounded-md">
-              <h1 className="text-2xl font-headline text-foreground">Cronómetro</h1>
-            </div>
-        ) : ''
-      }
+      {!isHidden ? (
+        <div className="absolute top-5 left-1/2 -translate-x-1/2 px-4 py-2 rounded-md">
+          <h1 className="text-2xl font-headline text-foreground">Cronómetro</h1>
+        </div>
+      ) : (
+        ""
+      )}
 
       {isConfiguring ? (
         <div className="flex flex-col items-center gap-4 animate-fadeIn">
-          <div className="flex items-center justify-center text-9xl font-bold text-foreground tabular-nums" style={{ fontSize: 'clamp(4rem, 18vw, 10rem)' }}>
-            <span 
+          <div
+            className="flex items-center justify-center text-9xl font-bold text-foreground tabular-nums"
+            style={{ fontSize: "clamp(4rem, 18vw, 10rem)" }}
+          >
+            <span
               className={cn(
-                "px-2 py-1 rounded cursor-default", 
-                focusedSegment === 'minutes' && "bg-accent text-accent-foreground ring-2 ring-accent-foreground outline-none"
+                "px-2 py-1 rounded cursor-default",
+                focusedSegment === "minutes" &&
+                  "bg-accent text-accent-foreground ring-2 ring-accent-foreground outline-none"
               )}
-              onClick={() => setFocusedSegment('minutes')}
+              onClick={() => setFocusedSegment("minutes")}
               tabIndex={0}
-              onFocus={() => setFocusedSegment('minutes')}
+              onFocus={() => setFocusedSegment("minutes")}
             >
-              {String(configuringMinutes).padStart(2, '0')}
+              {String(configuringMinutes).padStart(2, "0")}
             </span>
             <span className="mx-1">:</span>
-            <span 
+            <span
               className={cn(
-                "px-2 py-1 rounded cursor-default", 
-                focusedSegment === 'seconds' && "bg-accent text-accent-foreground ring-2 ring-accent-foreground outline-none"
+                "px-2 py-1 rounded cursor-default",
+                focusedSegment === "seconds" &&
+                  "bg-accent text-accent-foreground ring-2 ring-accent-foreground outline-none"
               )}
-              onClick={() => setFocusedSegment('seconds')}
+              onClick={() => setFocusedSegment("seconds")}
               tabIndex={0}
-              onFocus={() => setFocusedSegment('seconds')}
+              onFocus={() => setFocusedSegment("seconds")}
             >
-              {String(configuringSeconds).padStart(2, '0')}
+              {String(configuringSeconds).padStart(2, "0")}
             </span>
           </div>
         </div>
       ) : (
         <div className="text-center animate-fadeIn">
-          <h2 className="text-9xl font-bold text-foreground tabular-nums" style={{ fontSize: 'clamp(4rem, 20vw, 12rem)' }}>
+          <h2
+            className="text-9xl font-bold text-foreground tabular-nums"
+            style={{ fontSize: "clamp(4rem, 20vw, 12rem)" }}
+          >
             {formatTime(timeLeft)}
           </h2>
         </div>
       )}
-      
+
       <footer className="absolute bottom-5 text-center text-sm text-foreground px-4">
-        {
-          !isHidden ? (
-            <p>{statusMessage}</p>
-          ) : ''
-        }
+        {!isHidden ? <p>{statusMessage}</p> : ""}
         <p className="mt-2">© Unidad de Informática - SECGEN</p>
       </footer>
 
@@ -219,11 +225,17 @@ export default function ChronoKeysPage() {
           animation: fadeIn 0.3s ease-out;
         }
         @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
+          from {
+            opacity: 0;
+            transform: translateY(10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
         [tabindex="0"]:focus {
-          outline: none; 
+          outline: none;
         }
       `}</style>
     </main>
