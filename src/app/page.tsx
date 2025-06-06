@@ -3,6 +3,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { cn } from '@/lib/utils';
+import { getCurrentWindow } from "@tauri-apps/api/window";
 
 const DEFAULT_TIME_SECONDS = 5 * 60; // 5 minutes
 
@@ -96,6 +97,8 @@ export default function ChronoKeysPage() {
         setIsConfiguring(true);
       } else if (key === 'm'){
         setIsHidden(!isHidden)
+      } else if (key === 'x') {
+        getCurrentWindow().close();
       }
     },
     [isConfiguring, timeLeft, initialTime, focusedSegment, handleSaveConfiguration, isHidden]
@@ -132,7 +135,7 @@ export default function ChronoKeysPage() {
     statusMessage = "Ingrese el nuevo tiempo. Use ↑↓ y números. ←→ para cambiar segmento. 'F'/Enter para guardar.";
   } else {
     if (isRunning) {
-      statusMessage = "Iniciado... Presione 'I' para pausar | 'R' para reiniciar | 'M' para ocultar.";
+      statusMessage = "Iniciado... Presione 'I' para pausar | 'R' para reiniciar | 'M' para ocultar | 'X' para cerrar.";
     } else { 
       if (timeLeft === 0) {
         if (initialTime === 0) { 
@@ -146,7 +149,7 @@ export default function ChronoKeysPage() {
          if (initialTime === 0) {
             statusMessage = "Presione 'F' para configurar un tiempo, luego 'I' para iniciar.";
          } else {
-            statusMessage = "Presione 'I' para iniciar | 'F' para configurar | 'R' para reiniciar | 'M' para ocultar.";
+            statusMessage = "Presione 'I' para iniciar | 'F' para configurar | 'R' para reiniciar | 'M' para ocultar | 'X' para cerrar.";
          }
       }
     }

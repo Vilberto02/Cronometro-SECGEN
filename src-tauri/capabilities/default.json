@@ -2,10 +2,22 @@
   "$schema": "../gen/schemas/desktop-schema.json",
   "identifier": "default",
   "description": "enables the default permissions",
-  "windows": [
-    "main"
-  ],
-  "permissions": [
-    "core:default"
-  ]
+  "windows": ["main"],
+  "permissions": ["core:default"],
+  "security": {
+    "csp": null,
+    "capabilities": [
+      {
+        "identifier": "title-bar",
+        "windows": ["*"],
+        "permissions": [
+          "core:window:allow-start-dragging",
+          "core:window:allow-minimize",
+          "core:window:allow-toggle-maximize",
+          "core:window:allow-close",
+          "core:window:allow-internal-toggle-maximize"
+        ]
+      }
+    ]
+  }
 }

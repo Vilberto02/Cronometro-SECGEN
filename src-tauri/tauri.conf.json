@@ -1,7 +1,7 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
   "productName": "Cronometro",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "identifier": "com.cronometrosecgen.dev",
   "build": {
     "frontendDist": "../out",
@@ -21,14 +21,21 @@
       }
     ],
     "security": {
-      "csp": null
+      "csp": null,
+      "capabilities": [
+        {
+          "identifier": "title-bar",
+          "windows": ["*"],
+          "permissions": [
+            "core:window:allow-close"
+          ]
+        }
+      ]
     }
   },
   "bundle": {
     "active": true,
     "targets": "all",
-    "icon": [
-      "icons/favicon.ico"
-    ]
+    "icon": ["icons/favicon.ico"]
   }
 }
