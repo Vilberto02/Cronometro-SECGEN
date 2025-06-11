@@ -11,3 +11,36 @@ Este es un programa que ejecuta un cronómetro.
 5. Llevar el proyecto a producción con el comando `npm run build`
 6. Configurar el identifier en `tauri.conf`
 7. Generar el ejecutable e instalador del proyecto con el comando `npx tauri build`
+
+## Configurar next.conf
+
+Para generar la carpeta `/out`.
+
+```jsx
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  /* config options here */
+  output: "export",
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  images: {
+    unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "placehold.co",
+        port: "",
+        pathname: "/**",
+      },
+    ],
+  },
+};
+
+export default nextConfig;
+
+```
